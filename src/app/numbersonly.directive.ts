@@ -1,19 +1,28 @@
-import { Directive,ElementRef,HostListener,Input } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { Directive,Renderer2, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: 'input[appNumbersonly]'
+  selector: '[appNumbersonly]'
 })
 export class NumbersonlyDirective {
 
-  constructor(private _el: ElementRef) { }
+  constructor(private render: Renderer2, private elRef: ElementRef) { }
 
-  @HostListener('input', ['$event']) onInputChange() {
-    const initalValue = this._el.nativeElement.value;
-    this._el.nativeElement.value = initalValue.replace(/[^0-9]*/g, '');
-    if ( initalValue !== this._el.nativeElement.value) {
-      //$event.stopPropagation();
+  @HostListener('keypress', ['$event']) keyEvent(event:any) {
+ 
+   
+    // console.log(event)
+    // const initalValue = this.elRef.nativeElement.value;
+
+    // this.elRef.nativeElement.value = initalValue.replace(/[^0-9]*/g, '');
+   
+    // if ( initalValue !== this.elRef.nativeElement.value) {
+    //   event.stopPropagation();
+    // }
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
     }
+    return true;
   }
 
 }

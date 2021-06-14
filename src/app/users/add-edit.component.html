@@ -36,14 +36,14 @@
         </div>
         <div class="form-group col">
             <label>Mobile</label>
-            <input type="text" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+            <input type="text" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" appNumbersonly/>
             <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                 <div *ngIf="f.mobile.errors.required">Mobile Number is required</div>
             </div>
         </div>
         <div class="form-group col">
             <label>alt Mobile</label>
-            <input type="text" formControlName="altmobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.altmobile.errors }" />
+            <input type="text" formControlName="altmobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.altmobile.errors }" appNumbersonly/>
             <div *ngIf="submitted && f.altmobile.errors" class="invalid-feedback">
                 <div *ngIf="f.altmobile.errors.required">Alt Mobile Number is required</div>
             </div>

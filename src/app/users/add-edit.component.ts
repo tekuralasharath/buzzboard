@@ -29,13 +29,12 @@ export class AddEditComponent implements OnInit {
 
       //  const formOptions: AbstractControlOptions = { validators: MustMatch('password', 'confirmPassword') };
         this.form = this.formBuilder.group({
-           
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             company: ['', Validators.required],
-            mobile: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-            altmobile: ['', [Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+            mobile: ['', [Validators.required, Validators.maxLength(12),Validators.minLength(10)]],
+            altmobile: ['']
         });
 
         if (!this.isAddMode) {
